@@ -1,0 +1,114 @@
+grep: lets search files for specific patterns for text
+grep -i : makes case sensitive
+grep -i break-in auth.log// searches break-in in the auth.log file
+
+awk: extract the list of specific things
+grep -i break-in auth.log | awk{'print $12'}// prints first 12 parts of a line
+
+#Primary reason is for comaprison
+
+[[ expression ]] // keep spaces between the expressions.
+
+1: false
+0: success
+
+//Compares Strings 
+Operation:       Operator:
+Less than        [[ $a < $b ]]
+Greater than     [[ $a > $b ]]
+Less than or 
+equal to         [[ $a <=$b ]]
+Greater than
+or equal to      [[ $a >=$b ]]
+Equal            [[ $a == $b ]]
+Not Equal        [[ $a != $b ]]
+
+//Compares Operations
+
+Operation:       Operator:
+Less than        [[ $a -lt $b ]]
+Greater than     [[ $a -gt $b ]]
+Less than or 
+equal to         [[ $a -le $b ]]
+Greater than
+or equal to      [[ $a -ge $b ]]
+Equal            [[ $a -eq $b ]]
+Not Equal        [[ $a -ne $b ]]
+
+//Logical Operators
+
+Operation:       Operator:
+Logical AND      [[ $a && $b ]]
+Logical OR       [[ $a || $b ]]
+Logical NOT      [[ $a || $b ]]
+
+//String null value
+
+Operation:       Operator:
+Is Null          [[ -z $a ]]
+Is not null?     [[ -n $a ]]
+
+
+//General common commands
+
+displaying the length of the string
+a= "hello"
+echo ${#a} //Output: 5 
+
+Concating string
+a="hello"
+b="world"
+c= $a$b
+echo $c // output: helloworld
+
+displaying substring after certain numbers of charaters
+d= ${c:3}
+echo $d // output: loworld
+
+
+displaying substring after certain numbers of charaters upto specified number:
+e= ${c:3:4}
+echo $e // output: lowo
+echo ${c: -4} //output: orld--last 4 chars
+echo ${c: -4:3} //output: orl--chunking three letters from 4 starting from end, common uses to extract date
+
+Replacing the strings value:
+fruit = "apple banana banana cherry"
+echo ${fruit/banana/durian}
+//output: apple durian banana cherry -->replaces string banana with durian
+
+echo ${fruit//banana/durian}
+//output: apple durian durian cherry -->replaces string banana with durian
+
+echo ${fruit/#apple/durian}
+//output: durian banana banana cherry -->replaces very beginning of string e.g. apple  with durian
+
+echo ${fruit/#banana/durian}
+//output: apple banana banana cherry -->does not affect anything since the beginning of strings is not banana
+
+echo ${fruit/%cherry/durian}
+//output: apple banana banana durian -->replaces end of strings cherry with durian
+
+echo ${fruit/%banana/durian}
+//output: apple banana banana cherry -->does not affect anything since the end of strings is not banana
+
+
+date and printf:
+
+date +"%d-%m-%Y"
+ouput: 5/10/2020 //todays date in dd-mm-yyyy format
+
+date +"%H-%M-%S"
+output: 22-58-55 //current time in hh-min-sec format
+
+
+printf:
+#prfintf gives more options than echo to display
+
+printf "Name:\t%s\nID:\t%04d\n" "naf" "12"
+output nicely with tab: 
+Name:	naf
+ID:	0012
+
+
+
