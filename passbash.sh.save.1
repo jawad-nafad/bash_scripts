@@ -1,0 +1,33 @@
+guess_me(){
+rand=$RANDOM
+correct=${rand:0:1}
+	echo Welcome $user_name!! Lets play a simple game! Select a single digit number.m6
+	read -p "Select a one digit number" guessed_number
+	while [[ $guessed_number != $correct ]]; do
+		read -p "Nope! try again!" guessed_number
+	done
+	echo "Good Job! You guessed the correct number $correct"
+}
+welcome(){
+echo Hi there, What is your name?
+read user_name
+echo "Welcome $user_name!! Select one of the following option: "
+
+select choice in 1 2
+do
+case $choice in
+1)
+guess_me
+;;
+2)
+echo "pasa khao"
+;;
+*)
+echo "Try again"
+;;
+esac
+done
+
+}
+welcome
+
